@@ -1,0 +1,21 @@
+bot_prefix: "@"
+token: "ODU1MDkxNzEwNzg2MDExMTQ3.YMtcNg.-K5m8OCGXSstRPbbF6ZuIoRbFTA"
+application_id: "855091710786011147"
+owners:
+  # Vertigo#1313
+  - 294364431259926530
+  # rumdev#5981
+  - 358639011109142530
+  # getsetquiz#1556
+  - 854914382961180722
+  # rra#5516
+  - 502111647561809933
+blacklist:
+  # User IDs of people who cant use this bot.
+  - 123456789
+  - 987654321
+main_color: 0xD75BF4
+error: 0xE02B2B
+success: 0x42F56C
+warning: 0xF59E42
+info: 0x4299F5
