@@ -2,7 +2,7 @@ import os
 import platform
 import random
 import sys
-
+import traceback
 import discord
 import yaml
 from discord.ext import commands, tasks
@@ -45,6 +45,7 @@ intents.members = True
 """
 
 intents = discord.Intents.default()
+intents.members = True
 
 bot = Bot(command_prefix=config["bot_prefix"], intents=intents)
 
@@ -81,8 +82,7 @@ if __name__ == "__main__":
             except Exception as e:
                 exception = f"{type(e).__name__}: {e}"
                 print(f"Failed to load extension {extension}\n{exception}")
-
-
+   
 # The code in this event is executed every time someone sends a message, with or without the prefix
 @bot.event
 async def on_message(message):
@@ -136,7 +136,7 @@ async def on_command_error(context, error):
         )
         await context.send(embed=embed)
     raise error
-
+    
 
 # Run the bot with the token
 bot.run(config["token"])
