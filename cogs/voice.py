@@ -56,16 +56,19 @@ class voice(commands.Cog):
                     id = member.id
                     category = self.bot.get_channel(categoryID)
                     channel2 = await member.guild.create_voice_channel(name,category=category)
+                    channel3 = await member.guild.create_text_channel(name, category=category)
                     channelID = channel2.id
                     await member.move_to(channel2)
                     await channel2.set_permissions(self.bot.user, connect=True,read_messages=True)
                     await channel2.edit(name= name, user_limit = limit)
+                    await channel3.edit(name=name, user_limit=limit)
                     c.execute("INSERT INTO voiceChannel VALUES (?, ?)", (id,channelID))
                     conn.commit()
                     def check(a,b,c):
                         return len(channel2.members) == 0
                     await self.bot.wait_for('voice_state_update', check=check)
                     await channel2.delete()
+                    await channel3.delete()
                     await asyncio.sleep(3)
                     c.execute('DELETE FROM voiceChannel WHERE userID=?', (id,))
             except:

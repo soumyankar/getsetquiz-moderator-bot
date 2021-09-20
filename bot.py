@@ -65,8 +65,9 @@ async def on_ready():
 @tasks.loop(minutes=1.0)
 async def status_task():
     # Add bot statuus here.
-    statuses = [f"{config['bot_prefix']}help", "Need to add some status here."]
+    statuses = [f"{config['bot_prefix']}help", "Welcome to the GetSetQuiz Community."]
     await bot.change_presence(activity=discord.Game(random.choice(statuses)))
+    # await bot.change_presence (activity = discord.Activity (type = discord.ActivityType.watching , name = statuses))
 
 
 # Removes the default help command of discord.py to be able to create our custom help command.

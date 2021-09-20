@@ -16,6 +16,8 @@ class moderation(commands.Cog, name="moderation"):
     def __init__(self, bot):
         self.bot = bot
 
+
+
     @commands.command(name='kick', pass_context=True)
     @commands.has_permissions(kick_members=True)
     async def kick(self, context, member: discord.Member, *, reason="Not specified"):
@@ -165,7 +167,6 @@ class moderation(commands.Cog, name="moderation"):
             color=config["success"]
         )
         await context.send(embed=embed)
-
 
 def setup(bot):
     bot.add_cog(moderation(bot))
